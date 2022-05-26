@@ -1,9 +1,10 @@
 import { useState } from "react";
+import data from "../data";
 
 const Search = ({ placeholder, props }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [data, setData] = useState("");
-  const [list, setList] = useState({});
+  const [keyc, setKeyc] = useState("");
 
   const searchCity = (searchQuery) => {
     fetch(
@@ -21,12 +22,6 @@ const Search = ({ placeholder, props }) => {
     const searchWord = e.target.value;
     setData(searchWord);
     searchCity(searchWord);
-    // const newFilter = data.filter((value) => {
-    //   return value.LocalizedName.toLowerCase().includes(
-    //     searchWord.toLowerCase()
-    //   );
-    // });
-    // setFilteredData(newFilter);
   };
 
   return (
@@ -44,9 +39,9 @@ const Search = ({ placeholder, props }) => {
         <div className="result">
           {filteredData.map((value, key) => {
             return (
-              <a href="h">
+              <div href="h" onClick={() => setKeyc(value.key)}>
                 <p>{value.LocalizedName}</p>
-              </a>
+              </div>
             );
           })}
         </div>
